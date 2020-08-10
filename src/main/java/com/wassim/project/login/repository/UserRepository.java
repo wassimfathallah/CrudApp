@@ -9,4 +9,5 @@ import com.wassim.project.login.module.User;
 public interface UserRepository extends CrudRepository<User	,Integer> {
 
 	List<User> findUserById(int id);
+	User findByUsernameAndPassword(String username,String password);
 }

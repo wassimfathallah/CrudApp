@@ -7,7 +7,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Cache-Control" content="no-cache">
 <meta http-equiv="Expires" content="sat, 01 Dec 2001 00:00:00 GMT">
-<title>Login</title>
+<title>Tech Store</title>
 <link href="static/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -22,32 +22,7 @@
 
 
 
-	<nav class="navbar fixed navbar-expand-lg navbar-light bg-light ">
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#navbarTogglerDemo01"
-			aria-controls="navbarTogglerDemo01" aria-expanded="false"
-			aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse " id="navbarTogglerDemo01">
-			<a class="navbar-brand text-info" href="/welcome">Home Page</a>
-			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-				<li class="nav-item active"><a class="nav-link" href="/welcome">Home
-						<span class="sr-only">(current)</span>
-				</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Login</a></li>
-				<li class="nav-item"><a class="nav-link " href="/register">Register</a>
-				</li>
-				<li class="nav-item"><a class="nav-link " href="/show-users">All
-						users</a></li>
-			</ul>
-			<form class="form-inline my-2 my-lg-0">
-				<input class="form-control mr-sm-2" type="search"
-					placeholder="Search" aria-label="Search">
-				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-			</form>
-		</div>
-	</nav>
+	<%@ include file="navbar.jsp" %>
 	<!-- --------------------------------navbar -->
 
 
@@ -288,6 +263,57 @@
 
 
 
+	<!-- ---------------------jumbotron -->
+
+	<c:choose>
+		<c:when test="${mode=='MODE_LOGIN'}">
+
+
+
+
+
+			<div class="container" style="padding-top: 50px;">
+
+				<div class="container text-center">
+					<h3 class="text-info ">Login form</h3>
+					<hr>
+					<form class="form-horizontal  text-center " method="POST"
+						action="login-user" style="padding-top: 30px;">
+
+						<c:if test="${not empty error }">
+						<div class= "alert alert-danger">
+							<c:out value="${error }"></c:out>
+							</div>
+					</c:if>
+						<div class="form-group">
+
+							<div class="col-md-6" style="margin: auto;">
+								<input type="text" class="form-control" name="username"
+									placeholder="Username" value="${user.username}" />
+							</div>
+						</div>
+						
+					
+						<div class="form-group">
+							<div class="col-md-6" style="margin: auto;">
+								<input type="password" class="form-control " name="password"
+									placeholder="Password" value="${user.password}" />
+							</div>
+						</div>
+						<div class="form-group ">
+							<input type="submit" class="btn btn-info col-md-4"
+								value="Login" />
+						</div>
+					</form>
+				</div>
+			</div>
+		</c:when>
+
+
+	</c:choose>
+	
+	
+	<!--_________________________________Mode login -->
 
 
 
